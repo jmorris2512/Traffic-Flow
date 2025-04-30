@@ -19,15 +19,26 @@ public class SimulationController {
     }
 
     public void runSimulation() {
-        // Basic traffic light and car actions
-        for (TrafficLight light : trafficLights) {
-            System.out.println("Current light color: " + light.getColor());
-            light.changeColor("Green"); // Change light to green for simplicity
-        }
+        // Simulate a simple loop with traffic lights changing and cars reacting
+        int cycleCount = 5; // Number of cycles to simulate
 
-        for (Car car : cars) {
-            car.accelerate(10); // Simulate cars accelerating
-            car.brake(5); // Simulate cars braking
+        for (int i = 0; i < cycleCount; i++) {
+            System.out.println("\nCycle " + (i + 1) + " starts:");
+
+            // Change traffic light state
+            for (TrafficLight light : trafficLights) {
+                System.out.println("Current light color: " + light.getColor());
+                light.cycle(); // Cycle the light
+            }
+
+            // Cars respond to traffic lights
+            for (Car car : cars) {
+                if (trafficLights.get(0).getColor() == TrafficLightColor.GREEN) {
+                    car.accelerate(10); // Cars accelerate on green light
+                } else {
+                    car.brake(5); // Cars brake on red/yellow light
+                }
+            }
         }
 
         System.out.println("Simulation has completed.");
