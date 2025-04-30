@@ -15,7 +15,7 @@ public class Car {
     }
 
     public void brake(int decrement) {
-        this.speed -= decrement;
+        this.speed = Math.max(0, this.speed - decrement); // Prevent negative speed
         System.out.println(this.make + " " + this.model + " slows down to " + this.speed + " mph.");
     }
 
