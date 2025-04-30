@@ -57,5 +57,10 @@ jobs:
       run: ./gradlew build --no-daemon  # Build the project (can add flags based on your needs)
 
     # Optional: Step 7: Run Unit Tests
-    - name: Run
+    - name: Run Unit Tests
+      run: ./gradlew test --no-daemon  # Run unit tests (optional)
+
+    # Optional: Step 8: Build APK
+    - name: Build APK
+      run: ./gradlew assembleRelease --no-daemon  # Build release APK (optional)
 
